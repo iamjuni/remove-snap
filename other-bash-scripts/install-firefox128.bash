@@ -4,7 +4,7 @@ echo "Adding mozilla ppa"
 
 sudo add-apt-repository ppa:mozillateam/ppa
 
-echo "Configing apt block snap version of firefox-esr"
+echo "Configuring apt to block snap's version of firefox"
 
 echo '
 Package: *

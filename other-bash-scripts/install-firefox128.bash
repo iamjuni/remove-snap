@@ -4,17 +4,13 @@ echo "Adding mozilla ppa"
 
 sudo add-apt-repository ppa:mozillateam/ppa
 
-echo "Configuring apt to block snap's version of firefox"
+echo "Configuring apt to block snap version of firefox"
 
-echo '
-Package: *
-Pin: release o=LP-PPA-mozillateam
-Pin-Priority: 1001
-
+cat << EOF | sudo tee /etc/apt/preferences.d/firefox.pref > /dev/null
 Package: firefox
 Pin: version 1:1snap*
 Pin-Priority: -5
-' | sudo tee /etc/apt/preferences.d/mozilla-firefox > /dev/null
+EOF
 
 echo "Removing snap version of firefox"
 
@@ -22,4 +18,4 @@ sudo snap remove firefox || true
 
 echo "Installing firefox"
 
-sudo apt-get -y firefox
+sudo apt-get install -y firefox

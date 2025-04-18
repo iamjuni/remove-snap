@@ -4,6 +4,8 @@ echo "Adding mozilla ppa"
 
 sudo add-apt-repository ppa:mozillateam/ppa
 
+sudo apt-get -y update
+
 echo "Configuring apt to block snap version of firefox"
 
 cat << EOF | sudo tee /etc/apt/preferences.d/firefox.pref > /dev/null
